@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contagem de Utensílios Café</title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    h2 {
+      text-align: center;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      max-width: 200px;
+      height: auto;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 6px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <img src="https://static.wixstatic.com/media/d830b0_207a7b09d8f24ebc97b887c3d4d18691~mv2.png" alt="Logo da Empresa">
+  </div>
+
+  <h2>Contagem de Utensílios ☕</h2>
+
+  <form id="formulario">
+    <!-- Tipo de formulário -->
+    <input type="hidden" name="tipoFormulario" value="P46">
+
+    <!-- Responsável -->
+    <label for="nome">Responsável:</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <!-- Itens -->
+    <label>Xicaras grande</label>
+    <input type="number" name="Xicaras grande" min="0">
+
+    <label>Xícaras pequena</label>
+    <input type="number" name="Xícaras pequena" min="0">
+
+    <label>Pires grande</label>
+    <input type="number" name="Pires grande" min="0">
+
+    <label>Pires pequeno</label>
+    <input type="number" name="Pires pequeno" min="0">
+
+    <label>Talheres grande</label>
+    <input type="number" name="Talheres grande" min="0">
+
+    <label>Média e pequena</label>
+    <input type="number" name="Média e pequena" min="0">
+
+    <label>Garfo</label>
+    <input type="number" name="Garfo" min="0">
+
+    <label>Faca</label>
+    <input type="number" name="Faca" min="0">
+
+    <label>Pratos</label>
+    <input type="number" name="Pratos" min="0">
+
+    <label>Pegador pequeno</label>
+    <input type="number" name="Pegador pequeno" min="0">
+
+    <label>Pegador pequeno</label>
+    <input type="number" name="Pegador pequeno" min="0">
+
+    <label>Bowl pra salada de frutasgrande</label>
+    <input type="number" name="Bowl pra salada de frutasgrande" min="0">
+
+    <label>Bowl pra salada de frutas</label>
+    <input type="number" name="Bowl pra salada de frutas" min="0">
+
+    <button type="submit">Enviar Contagem</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('formulario');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault(); fetch("https://script.google.com/macros/s/AKfycbxWaIXVIquIjdOVA93xRe4cB70oMADCdDTKVKO6z50cGHYKwLIYpPiRj1bcQouLLZ95/exec", {
+        method: "POST",
+        body: new FormData(form)
+      })
+      .then(res => res.text())
+      .then(text => {
+        if (text.includes("OK")) {
+          alert("✅ Contagem enviada com sucesso!");
+          form.reset();
+        } else {
+          alert("⚠️ Erro no envio: " + text);
+        }
+      })
+      .catch(err => {
+        alert("❌ Erro na conexão!");
+        console.error(err);
+      });
+    });
+  </script>
+
+</body>
+</html>
