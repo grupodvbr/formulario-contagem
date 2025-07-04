@@ -112,11 +112,9 @@
     const form = document.getElementById('formulario');
 
     form.addEventListener('submit', e => {
-      e.preventDefault(); fetch("fetch("https://script.google.com/macros/s/AKfycbzBPD-DdGKYlkmBw79IhwFsl5RyteMXFV1zLqjBs5gmvGWGeZIe-ryspKsWdqTPlzaD/exec", {
-  method: "POST",
-  body: new FormData(form)
-})
-", {
+      e.preventDefault();
+
+      fetch("https://script.google.com/macros/s/AKfycbzirbnhQieCYQVIM9pvEhfOGBvbvrYB_wt1haLuRI_kwitU5wUAtoADzSs4CpVi9G2s/exec", {
         method: "POST",
         body: new FormData(form)
       })
